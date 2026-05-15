@@ -17,7 +17,7 @@
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        ./configuration.nix  # main system config
+        ./OS/configuration.nix  # main system config
         
         # Integrate home-manager as a NixOS module
         home-manager.nixosModules.home-manager
