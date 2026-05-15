@@ -14,7 +14,7 @@
     system = "x86_64-linux";
   in {
     # System configuration
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
         ./OS/configuration.nix  # main system config
