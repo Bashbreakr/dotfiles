@@ -17,7 +17,6 @@
   home.username = "bashbreakr";
   home.homeDirectory = "/home/bashbreakr";
 
-  home-manager.backupFileExtension = "backup";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -83,6 +82,8 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  home-manager.backupFileExtension = "backup";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
