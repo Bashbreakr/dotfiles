@@ -27,6 +27,7 @@
           home-manager.users.bashbreakr = import ./home.nix;
           # pass inputs to home.nix
           home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.backupFileExtension = "backup";
         }
       ];
     };
