@@ -19,12 +19,28 @@ require("lazy").setup({
   "EdenEast/nightfox.nvim",
   "nvim-mini/mini.icons",
 
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "master",
-    build = ":TSUpdate", -- lazy uses 'build' instead of 'run'
-  },
+    -- Treesitter
+    {
+      "nvim-treesitter/nvim-treesitter",
+      branch = "master",
+      build = ":TSUpdate",
+    },
+
+    -- markdown
+    {
+      "iamcco/markdown-preview.nvim",
+      ft = { "markdown" },
+      build = "cd app && npm install"
+    },
+
+    {
+      "MeanderingProgrammer/render-markdown.nvim",
+      ft = { "markdown" },
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-mini/mini.icons",
+      },
+    },
 
   -- lspconfig
   "neovim/nvim-lspconfig",
@@ -64,6 +80,10 @@ require("lazy").setup({
       require("plugins.alpha.alpha" .. choice)
     end
   }
+
+  
+}, {
+    lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
 })
 
 require("plugins.cmp")
@@ -71,3 +91,4 @@ require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.autopairs")
 require("plugins.discord")
+require("plugins.markdown")

@@ -3,13 +3,12 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./desktop-hardware-configuration.nix
     ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdb";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub.device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
   networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
