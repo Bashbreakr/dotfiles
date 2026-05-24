@@ -31,5 +31,23 @@
         }
       ];
     };
+
+    nixosConfigurations."laptop" = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./OS/laptopConfiguration.nix  # main system config
+        
+        # Integrate home-manager as a NixOS module
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.bashbreakr = import ./home.nix;
+          # pass inputs to home.nix
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.backupFileExtension = "backup";
+        }
+      ];
+    };
   };
 }
