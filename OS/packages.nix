@@ -48,6 +48,7 @@ with pkgs; [
   hyprpaper
   hyprshot
   fuzzel
+  swaynotificationcenter
 
   # Media
   mpv
@@ -62,4 +63,5 @@ with pkgs; [
 
   # Misc
   putty
+  tty-clock
 ]
