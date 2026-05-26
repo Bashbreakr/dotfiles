@@ -43,12 +43,10 @@ with pkgs; [
   # Hyprland / Wayland
   wl-clipboard
   hyfetch
-  ironbar
   cava
   hyprpaper
   hyprshot
   fuzzel
-  swaynotificationcenter
 
   # Media
   mpv
