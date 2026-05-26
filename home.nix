@@ -10,6 +10,7 @@
     "fuzzel".source = ./fuzzel;
     "cava".source = ./cava;
     "yazi".source = ./yazi;
+    "eww".source = ./eww;
   };
 
   home.username = "bashbreakr";
@@ -20,6 +21,8 @@
 
   home.packages = with pkgs; [
     nodejs
+    eww
+    jq
   ];
 
   home.file = {
