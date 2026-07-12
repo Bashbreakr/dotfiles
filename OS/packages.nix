@@ -38,6 +38,7 @@ with pkgs; [
   # Communication
   discord
   thunderbird
+  spotify-player
   spotify
 
   # Hyprland / Wayland
@@ -51,6 +52,8 @@ with pkgs; [
   # Media
   mpv
   ardour
+  cmus
+  touchosc
 
   # Yazi support
   yazi
