@@ -1,30 +1,39 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
 { config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./desktop-hardware-configuration.nix
+      ./laptop-hardware-configuration.nix
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
 
-  networking.hostName = "desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      useOSProber = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+      theme = "/etc/nixos/custom-boot-theme";
+    };
+
+    systemd-boot.enable = false;
+  };
+
+  networking.hostName = "laptop"; # Define your hostname.
+  # networking.wireless.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  services.prometheus.exporters.node = {
-    enable = true;
-    port =  9100;
-    openFirewall = true;
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -44,6 +53,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "dvorak";
+  };
+
   # Configure console keymap
   console.keyMap = "dvorak";
   services.keyd.enable = true;
@@ -52,12 +67,8 @@
   users.users.bashbreakr = {
     isNormalUser = true;
     description = "Bash Breakr";
-    extraGroups = [ "jackaudio" "networkmanager" "wheel" "seat" "disk" ];
-    packages = with pkgs; [
-      git
-      wl-clipboard
-      tree
-    ];
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
   };
 
   nix.settings.experimental-features = [
@@ -65,44 +76,20 @@
     "flakes"
   ];
 
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  programs.firefox.enable = true;
-
   programs.hyprland.enable = true;
-
-  programs.yazi.enable = true;
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    glibc
-  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages =
+  environment.systemPackages = 
     (import ./packages.nix { inherit pkgs; })
     ++[
-      pkgs.neovim
-      #(builtins.getFlake "github:nix-community/neovim-nightly-overlay").packages.${pkgs.system}.default
-    ];
-
-  programs.neovim = {
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-  };
-
-  services.jack = {
-    jackd.enable = true;
-    alsa.enable = false;
-    loopback = {
-      enable = true;
-    };
-  };
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

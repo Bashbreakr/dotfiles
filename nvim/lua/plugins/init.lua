@@ -19,76 +19,90 @@ require("lazy").setup({
   "EdenEast/nightfox.nvim",
   "nvim-mini/mini.icons",
 
-    -- Treesitter
-    {
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ":TSUpdate",
+  },
+
+  -- markdown
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && npm install"
+  },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      branch = "master",
-      build = ":TSUpdate",
+      "nvim-mini/mini.icons",
     },
-
-    -- markdown
-    {
-      "iamcco/markdown-preview.nvim",
-      ft = { "markdown" },
-      build = "cd app && npm install"
-    },
-
-    {
-      "MeanderingProgrammer/render-markdown.nvim",
-      ft = { "markdown" },
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-mini/mini.icons",
-      },
-    },
+  },
 
   -- lspconfig
   "neovim/nvim-lspconfig",
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "mfussenegger/nvim-jdtls",
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-nvim-lsp",
+  
+  -- REMOVED: old nvim-cmp plugins to prevent conflicts
+  -- "hrsh7th/nvim-cmp",
+  -- "hrsh7th/cmp-nvim-lsp",
   "L3MON4D3/LuaSnip",
   "windwp/nvim-autopairs",
   "onsails/lspkind.nvim",
+
+  "mrcjkb/rustaceanvim",
+  "saecki/crates.nvim",
 
   -- discord
   "vyfor/cord.nvim",
 
   -- telescope
   {
-      "nvim-telescope/telescope.nvim",
-      dependencies = {
-          "nvim-lua/plenary.nvim",
-          "nvim-tree/nvim-web-devicons",
-          {
-              "nvim-telescope/telescope-fzf-native.nvim",
-              build = "make",
-           },
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
       },
-   },
+    },
+  },
    
-   -- startup
-   {
+  -- startup
+  {
     "goolord/alpha-nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        math.randomseed(os.time())
-
-        local choice = math.random(1, 7)
+      math.randomseed(os.time())
+      local choice = math.random(1, 7)
       require("plugins.alpha.alpha" .. choice)
     end
-  }
+  }, -- <-- Added missing comma here to let us add blink below
 
+    {
+        'saghen/blink.cmp',
+        build = 'cargo build --release',
+        version = '*',
+      },
   
 }, {
-    lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
+  lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
 })
 
-require("plugins.cmp")
+-- REMOVED: Commented out your old cmp configuration file 
+-- require("plugins.cmp") 
+
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.autopairs")
 require("plugins.discord")
 require("plugins.markdown")
+require("plugins.mason")
+require("plugins.crates")
+require("plugins.blink")

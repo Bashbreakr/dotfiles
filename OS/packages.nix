@@ -1,45 +1,68 @@
 { pkgs, ... }:
+
 with pkgs; [
-    discord
-    hyfetch
-    python3
-    openjdk21
-    quarto
-    ironbar
-    cava
-    p7zip
-    unzip
-    tree
-    scc
-    eza
-    putty
-    envsubst
-    firefox
-    wget
-    gum
-    wezterm
-    kitty #Hyprland
-    hyprpaper
-    hyprshot
-    fuzzel #Hyprland end
-    imv #Yazi
-    mpv
-    ffmpegthumbnailer
-    jq
-    fd
-    ripgrep
-    zoxide
-    poppler-utils
-    ffmpeg #Yazi end
-    librewolf
-    ardour
-    spotify
-    nix-prefetch-scripts
-    thunderbird
-    rustup
-    gcc
-    gnumake
-    tree-sitter
-    ripgrep
-    fd
-  ]
+  # Core CLI utilities
+  tree
+  wget
+  unzip
+  p7zip
+  jq
+  gum
+  envsubst
+  scc
+  eza
+  fd
+  ripgrep
+  zoxide
+
+  # Development
+  git
+  neovim
+  python3
+  openjdk21
+  rustup
+  gcc
+  gnumake
+  tree-sitter
+  quarto
+  nix-prefetch-scripts
+
+  # Terminal / shell
+  wezterm
+  kitty
+
+  # Browsers
+  firefox
+  librewolf
+
+  # Communication
+  discord
+  thunderbird
+  spotify-player
+  spotify
+
+  # Hyprland / Wayland
+  wl-clipboard
+  hyfetch
+  cava
+  hyprpaper
+  hyprshot
+  fuzzel
+
+  # Media
+  mpv
+  ardour
+  cmus
+  touchosc
+
+  # Yazi support
+  yazi
+  imv
+  ffmpeg
+  ffmpegthumbnailer
+  poppler-utils
+
+  # Misc
+  putty
+  tty-clock
+]
