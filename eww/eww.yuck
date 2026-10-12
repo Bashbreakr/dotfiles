@@ -1,0 +1,21 @@
+(defpoll time :interval "1s" "date +%H:%M")
+
+(defwindow clock
+  :monitor "focused"
+  :class "clock-window"
+  :geometry (geometry
+    :width "420px"
+    :height "160px"
+    :anchor "center")
+
+  :stacking "overlay"
+  :focusable false
+
+  (box
+    :class "clock-box"
+    :halign "center"
+    :valign "center"
+
+    (label
+      :class "clock-text"
+      :text time)))
