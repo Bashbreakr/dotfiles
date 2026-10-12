@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sleep 0.2
 # useful_stuff preparation
 REPO_URL="https://github.com/Bashbreakr/useful_stuff.git"
 TARGET_DIR="$HOME/.useful_stuff"
@@ -17,5 +18,7 @@ else
     git clone "$REPO_URL" "$TARGET_DIR"
     prepare
 fi
+
+sleep 0.2
 
 ~/.useful_stuff/random-wallpapers.sh
