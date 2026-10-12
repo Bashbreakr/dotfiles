@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPO_URL="https://github.com/YOUR_USERNAME/YOUR_REPO.git"
+REPO_URL="https://github.com/Bashbreakr/useful_stuff.git"
 TARGET_DIR="$HOME/.useful_stuff"
 
 if [ -d "$TARGET_DIR/.git" ]; then
