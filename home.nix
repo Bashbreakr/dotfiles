@@ -8,7 +8,6 @@
     "nvim".source = ./nvim;
     "hypr".source = ./hypr;
     "fuzzel".source = ./fuzzel;
-    "cava".source = ./cava;
     "yazi".source = ./yazi;
     "eww".source = ./eww;
   };
