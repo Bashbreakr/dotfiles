@@ -15,6 +15,7 @@ with pkgs; [
   ripgrep
   zoxide
   brightnessctl
+  fastfetch
 
   # Development
   git

@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
   xdg.configFile = {
     "kitty".source = ./kitty;
     "wezterm".source = ./wezterm;
@@ -14,7 +13,6 @@
 
   home.username = "bashbreakr";
   home.homeDirectory = "/home/bashbreakr";
-
 
   home.stateVersion = "25.11"; # Don't update
 
