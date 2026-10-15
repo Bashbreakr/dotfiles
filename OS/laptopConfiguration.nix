@@ -25,7 +25,7 @@
       efiSupport = true;
       useOSProber = true;
 
-      # theme = ./grub_theme;
+      theme = ./grub_theme;
     };
 
     systemd-boot.enable = false;
