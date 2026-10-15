@@ -64,19 +64,8 @@
     ];
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  programs.firefox.enable = true;
-
-  programs.hyprland.enable = true;
-
-  programs.yazi.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -84,21 +73,6 @@
     zlib
     glibc
   ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages =
-    (import ./packages.nix { inherit pkgs; })
-    ++[
-      pkgs.neovim
-      #(builtins.getFlake "github:nix-community/neovim-nightly-overlay").packages.${pkgs.system}.default
-    ];
-
-  programs.neovim = {
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
-  };
 
   services.jack = {
     jackd.enable = true;

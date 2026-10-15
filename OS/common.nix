@@ -23,4 +23,14 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  environment.systemPackages = 
+    (import ./packages.nix { inherit pkgs; })
+    ++[
+  ];
 }

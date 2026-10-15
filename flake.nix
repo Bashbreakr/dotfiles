@@ -9,46 +9,35 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
+
+    mkSystem = hostname: systemConfigPath: nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        systemConfigPath
+        { networking.hostName = hostname; }
+
+        # Integrate home-manager as a NixOS module
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.bashbreakr = import ./home.nix;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.backupFileExtension = "backup";
+        }
+      ];
+    };
   in {
-    # System configuration
-    nixosConfigurations."desktop" = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./OS/desktopConfiguration.nix  # main system config
-        
-        # Integrate home-manager as a NixOS module
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.bashbreakr = import ./home.nix;
-          # pass inputs to home.nix
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.backupFileExtension = "backup";
-        }
-      ];
+    nixosConfigurations = {
+      desktop = mkSystem "desktop" ./OS/desktopConfiguration.nix;
+      laptop  = mkSystem "laptop"  ./OS/laptopConfiguration.nix;
+      
+      # Universal fallback configuration
+      default = mkSystem "default" ./OS/fallbackConfiguration.nix;
     };
-
-    nixosConfigurations."laptop" = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./OS/laptopConfiguration.nix  # main system config
-        
-        # Integrate home-manager as a NixOS module
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.bashbreakr = import ./home.nix;
-          # pass inputs to home.nix
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.backupFileExtension = "backup";
-        }
-      ];
-    };
-
   };
 }

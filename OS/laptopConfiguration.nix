@@ -56,18 +56,6 @@
     packages = with pkgs; [];
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = 
-    (import ./packages.nix { inherit pkgs; })
-    ++[
-  ];
-
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc
