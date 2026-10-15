@@ -4,18 +4,22 @@
   imports =
     [ # Include the results of the hardware scan.
       ./desktop-hardware-configuration.nix
+      ./common.nix
     ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
-  networking.hostName = "desktop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  boot.loader.grub = {
+    enable = true;
+    
+    device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    theme = ./grub_theme/;
+  }
+
+  networking.hostName = "desktop"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -130,5 +134,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }

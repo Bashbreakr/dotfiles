@@ -1,13 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./laptop-hardware-configuration.nix
+      ./common.nix
     ];
 
   hardware.bluetooth.enable = true;
@@ -37,16 +34,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  services.prometheus.exporters.node = {
-    enable = true;
-    port = 9100;
-    openFirewall = true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-  services.timesyncd.enable = true;
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -62,22 +49,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # Configure console keymap
-  console.keyMap = "dvorak";
-  services.keyd = {
-    enable = true;
-    
-    keyboards.default = {
-      ids = [ "*" ];
-
-      settings = {
-        main = {
-          alt = "esc";
-        };
-      };
-    };
-  };
-
   users.users.bashbreakr = {
     isNormalUser = true;
     description = "Bash Breakr";
@@ -89,11 +60,6 @@
     "nix-command"
     "flakes"
   ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  programs.hyprland.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
