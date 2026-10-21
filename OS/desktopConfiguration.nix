@@ -7,17 +7,17 @@
       ./common.nix
     ];
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
+  # # Bootloader.
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
   boot.loader.grub = {
     enable = true;
     
     device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
-    theme = ./grub_theme/;
-  }
+    theme = ./grub_theme;
+  };
 
   networking.hostName = "desktop"; # Define your hostname.
 
