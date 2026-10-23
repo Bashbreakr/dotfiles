@@ -76,4 +76,5 @@ with pkgs; [
   # Misc
   putty
   tty-clock
+  peaclock 
 ]
