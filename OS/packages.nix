@@ -51,6 +51,7 @@ with pkgs; [
   hyprpaper
   hyprshot
   fuzzel
+  rofi
 
   # Media
   mpv

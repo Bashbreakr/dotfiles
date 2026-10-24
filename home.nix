@@ -9,6 +9,7 @@
     "fuzzel".source = ./fuzzel;
     "yazi".source = ./yazi;
     "eww".source = ./eww;
+    "rofi".source = ./rofi;
   };
 
   home.username = "bashbreakr";
