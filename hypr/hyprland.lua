@@ -1,4 +1,4 @@
-require("configs/keybinds")
+require("keybinds")
 
 --###############
 --## MONITORS ###
@@ -45,9 +45,6 @@ hl.animation({ leaf = "fadeIn",      enabled = true, speed = 1.73, bezier = "alm
 hl.animation({ leaf = "fadeOut",     enabled = true, speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade",        enabled = true, speed = 3.03, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayers",  enabled = false })
-
--- Source: ~/.dotfiles/keybinds/hypr.conf — convert this file to Lua and ensure it is on Lua's package.path.
-require("hypr")
 
 hl.config({
 
