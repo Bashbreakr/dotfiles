@@ -14,17 +14,17 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(text))
 
 -- Stuff
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
+
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl reboot"))
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("swaync-client -t"))
+
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.dotfiles/hypr/scripts/clock-overlay.sh"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.dotfiles/hypr/scripts/close-clock-overlay.sh"), { release = true })
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("~/.useful_stuff/script_launcher.sh"))
--- bind = $mainMod, S, exec, systemctl poweroff
 
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
+-- rofi stuff
 
 -- Move focus with mainMod + nvim keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
