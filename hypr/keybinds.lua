@@ -1,11 +1,17 @@
-local mainMod = "super"
+local mainMod = "SUPER"
+
+local terminal = "wezterm"
+local fileManager = "wezterm -e yazi"
+local menu = "fuzzel"
+local browser = "librewolf"
+local text = "wezterm -e nvim"
 
 -- Applications
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("$terminal"))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("$fileManager"))
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("$menu"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("$browser"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("$text"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(text))
 
 -- Stuff
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -45,7 +51,7 @@ hl.bind(mainMod .. " + SHIFT + braceleft", hl.dsp.window.move({ workspace = 3 })
 hl.bind(mainMod .. " + SHIFT + braceright", hl.dsp.window.move({ workspace = 4 }))
 hl.bind(mainMod .. " + SHIFT + parenleft", hl.dsp.window.move({ workspace = 5 }))
 hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mainMod .. " + SHIFT + asterink", hl.dsp.window.move({ workspace = 7 }))
+hl.bind(mainMod .. " + SHIFT + asterisk", hl.dsp.window.move({ workspace = 7 }))
 hl.bind(mainMod .. " + SHIFT + parenright", hl.dsp.window.move({ workspace = 8 }))
 hl.bind(mainMod .. " + SHIFT + plus", hl.dsp.window.move({ workspace = 9 }))
 hl.bind(mainMod .. " + SHIFT + bracketright", hl.dsp.window.move({ workspace = 10 }))
