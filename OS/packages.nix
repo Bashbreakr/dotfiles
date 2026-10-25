@@ -65,7 +65,7 @@ with pkgs; [
 
   # audio-plugins
   lsp-plugins
-  airwindows
+  #airwindows
 
   # Yazi support
   yazi

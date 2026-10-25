@@ -16,7 +16,7 @@
     
     device = "/dev/disk/by-id/ata-INTENSO_SSD_128GB_F32564R02840";
 
-    theme = ./grub_theme;
+    # theme = ./grub_theme;
   };
 
   networking.hostName = "desktop"; # Define your hostname.
