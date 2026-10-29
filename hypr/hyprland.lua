@@ -118,7 +118,21 @@ hl.config({
     --## KEYBINDINGS ###
     --##################
     
+}
+
+-- Window rules
+hl.window_rule({
+    name  = "suppress-maximize",
+    match = { class = ".*" },
+    suppress_event = "maximize",
 })
+
+hl.layer_rule({
+    name  = "rofi-blur",
+    match = { namespace = "rofi" },
+    blur = true,
+}))
+
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("chmod +x ~/.dotfiles/hypr/scripts/startup-ini.sh && ~/.dotfiles/hypr/scripts/startup-ini.sh")
