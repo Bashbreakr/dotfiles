@@ -36,7 +36,7 @@ hl.animation({ leaf = "windowsIn",   enabled = true, speed = 6,  bezier = "winIn
 hl.animation({ leaf = "windowsOut",  enabled = true, speed = 5,  bezier = "winOut" })
 hl.animation({ leaf = "windowsMove", enabled = true, speed = 5,  bezier = "wind" })
 hl.animation({ leaf = "border",      enabled = true, speed = 1,  bezier = "liner" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 30, bezier = "liner", style = "loop" })
+hl.animation({ leaf = "borderangle", enabled = true, speed = 100, bezier = "liner", style = "loop" })
 hl.animation({ leaf = "layers",      enabled = true, speed = 6,  bezier = "wind",  style = "popin 90%" })
 hl.animation({ leaf = "layersIn",    enabled = true, speed = 6,  bezier = "winIn", style = "popin 90%" })
 hl.animation({ leaf = "layersOut",   enabled = true, speed = 5,  bezier = "winOut", style = "popin 90%" })
@@ -46,8 +46,8 @@ hl.animation({ leaf = "fadeOut",     enabled = true, speed = 1.46, bezier = "alm
 hl.animation({ leaf = "fade",        enabled = true, speed = 3.03, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayers",  enabled = false })
 
-hl.config({
 
+hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 20,
@@ -62,23 +62,24 @@ hl.config({
     },
 
     decoration = {
+
         rounding = 8,
         rounding_power = 2,
         active_opacity = 1.0,
         inactive_opacity = 0.8,
+
         shadow = {
             enabled = true,
             range = 4,
             render_power = 3,
             color = "rgba(1a1a1aee)",
         },
+
         blur = {
             enabled = false,
-            size = 8,
-            passes = 3,
-            ignore_opacity = true,
-            vibrancy = 0.1696,
         },
+
+        dim_around = 0.4,
     },
 
     animations = {
@@ -113,12 +114,7 @@ hl.config({
     cursor = {
         no_hardware_cursors = true,
     },
-
-    --##################
-    --## KEYBINDINGS ###
-    --##################
-    
-}
+})
 
 -- Window rules
 hl.window_rule({
@@ -128,11 +124,9 @@ hl.window_rule({
 })
 
 hl.layer_rule({
-    name  = "rofi-blur",
-    match = { namespace = "rofi" },
-    blur = true,
-}))
-
+    match = { namespace = "^(rofi|launcher)$" },
+    dim_around = true,
+})
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("chmod +x ~/.dotfiles/hypr/scripts/startup-ini.sh && ~/.dotfiles/hypr/scripts/startup-ini.sh")

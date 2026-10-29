@@ -25,6 +25,7 @@ hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.dotfiles/hypr/scripts/close-clock
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("~/.useful_stuff/script_launcher.sh"))
 
 -- rofi stuff
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.dotfiles/rofi/wallpaper.sh"))
 
 -- Move focus with mainMod + nvim keys
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
