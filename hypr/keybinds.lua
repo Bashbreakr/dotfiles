@@ -16,6 +16,17 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(text))
 -- Stuff
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 
+hl.bind("SUPER + A", function()
+    local is_enabled = hl.get_config("decoration.blur.enabled")
+    hl.config({
+        decoration = {
+            blur = {
+                enabled = not is_enabled
+            }
+        }
+    })
+end)
+
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl reboot"))

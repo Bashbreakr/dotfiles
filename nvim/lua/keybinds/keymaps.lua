@@ -6,6 +6,9 @@ map("n", "<leader>w", ":w<CR>", { desc = "Save File" })
 -- quit
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 
+-- Alpha
+vim.keymap.set('n', '<leader>a', '<cmd>Alpha<CR>', { desc = 'Open Alpha dashboard' })
+
 -- file browser
 map("n", "<leader>f", ":Ex<CR>", { desc = "Browser" })
 

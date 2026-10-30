@@ -52,6 +52,7 @@ with pkgs; [
   hyprshot
   fuzzel
   rofi
+  catppuccin-cursors.mochaDark
 
   # Media
   mpv
