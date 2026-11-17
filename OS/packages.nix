@@ -35,8 +35,8 @@ with pkgs; [
   kitty
 
   # Browsers
-  firefox
   librewolf
+  tridactyl-native
 
   # Communication
   discord
