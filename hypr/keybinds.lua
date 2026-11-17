@@ -5,6 +5,7 @@ local fileManager = "wezterm -e yazi"
 local menu = "fuzzel"
 local browser = "librewolf"
 local text = "wezterm -e nvim"
+local calc = "wezterm -e kalker"
 
 -- Applications
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
@@ -12,6 +13,7 @@ hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(text))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(calc))
 
 -- Stuff
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
@@ -28,7 +30,7 @@ hl.bind("SUPER + A", function()
 end)
 
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl reboot"))
 
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.dotfiles/hypr/scripts/clock-overlay.sh"))

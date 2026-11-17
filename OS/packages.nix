@@ -16,6 +16,7 @@ with pkgs; [
   zoxide
   brightnessctl
   fastfetch
+  kalker
 
   # Development
   git
