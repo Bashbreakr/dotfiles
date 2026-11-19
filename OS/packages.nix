@@ -17,6 +17,7 @@ with pkgs; [
   brightnessctl
   fastfetch
   kalker
+  nh
 
   # Development
   git

@@ -12,6 +12,7 @@
     "rofi".source = ./rofi;
   };
 
+
   home.username = "bashbreakr";
   home.homeDirectory = "/home/bashbreakr";
 
@@ -28,6 +29,28 @@
 
   home.sessionVariables = {
   };
+
+  # xdg.configFile."spotify-player/theme.toml".source = 
+    # (pkgs.fetchFromGitHub {
+      # owner = "MBeggiato";
+      # repo = "spotify-player-themes";
+      # rev = "8d067bfc5e89c3aba209a8db15aa4a4e046b17a9";
+      # hash = "sha256-imjyNmhVUUaayctYFRIH+bUy2zK2F3eRpc8/muQK3GY=";
+    # }) + "/theme.toml" ;
+
+  programs.spotify-player = {
+    enable = true;
+    settings = {
+      theme = "Winter";
+      login_redirect_uri = "http://127.0.0.1:8989/login";
+      client_id_command = {
+        command = "cat";
+        args = [ "/home/bashbreakr/.spotify_client_id"];
+      };
+    };
+  };
+
+  xdg.configFile."spotify-player/theme.toml".source = ./spotify-player/theme.toml;
 
   programs.home-manager.enable = true;
 }
