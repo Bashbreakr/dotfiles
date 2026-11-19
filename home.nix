@@ -30,6 +30,15 @@
   home.sessionVariables = {
   };
 
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 7d --keep 5";
+    };
+    flake = "/home/bashbreakr/.dotfiles";
+  };
+
   # xdg.configFile."spotify-player/theme.toml".source = 
     # (pkgs.fetchFromGitHub {
       # owner = "MBeggiato";
@@ -41,6 +50,7 @@
   programs.spotify-player = {
     enable = true;
     settings = {
+      withStreaming = true;
       theme = "Winter";
       login_redirect_uri = "http://127.0.0.1:8989/login";
       client_id_command = {
