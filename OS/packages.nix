@@ -55,6 +55,7 @@ with pkgs; [
   fuzzel
   rofi
   catppuccin-cursors.mochaDark
+  gocheat
 
   # Media
   mpv
