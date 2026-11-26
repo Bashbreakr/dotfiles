@@ -12,7 +12,6 @@
     "rofi".source = ./rofi;
   };
 
-
   home.username = "bashbreakr";
   home.homeDirectory = "/home/bashbreakr";
 
@@ -36,7 +35,9 @@
       enable = true;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/bashbreakr/.dotfiles";
+  };
+  home.sessionVariables = {
+    FLAKE = "/home/bashbreakr/.dotfiles";
   };
 
   # xdg.configFile."spotify-player/theme.toml".source = 

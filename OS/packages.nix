@@ -41,10 +41,9 @@ with pkgs; [
 
   # Communication
   discord
-  thunderbird
-  spotify-player
-  spotify
   signal-desktop
+  whatsie
+  thunderbird
 
   # Hyprland / Wayland
   wl-clipboard
@@ -56,8 +55,11 @@ with pkgs; [
   rofi
   catppuccin-cursors.mochaDark
   gocheat
+  quickshell
 
   # Media
+  spotify-player
+  spotify
   mpv
   ardour
   cmus
