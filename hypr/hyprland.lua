@@ -29,6 +29,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("chmod +x ~/.dotfiles/hypr/scripts/startup-ini.sh && ~/.dotfiles/hypr/scripts/startup-ini.sh")
 end)
 
+hl.env("FLAKE", "/home/bashbreakr/.dotfiles")
+
 --####################
 --## LOOK AND FEEL ###
 --####################
